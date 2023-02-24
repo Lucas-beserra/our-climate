@@ -7,6 +7,7 @@
 body {
     background-color: #00BFFF;
     color: #FFFFFF;
+    overflow-x: hidden;
 }
 
 .App {
@@ -18,6 +19,21 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+}
+
+.permition-container {
+    width: 100%;
+    padding: 3rem 0 0 1rem;
+    font-size: 2.5rem;
+}
+
+.loading-container {
+    width: 100%;
+    height: 100px;
+    margin: 50vh auto;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .happy-sun {

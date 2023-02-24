@@ -42,14 +42,16 @@ function App() {
 
   if(location == false){
     return (
-      <div>
-        <h1>É necessário permitir que o site saiba a sua localização</h1>
+      <div className="permition-container">
+        <span>É necessário permitir o acesso à sua localização!</span>
       </div>
     )
   }
   else if(weather == false){
     return (
-      <span>Carregando dados climáticos</span>
+      <div className="loading-container">
+        <span>Carregando dados climáticos...</span>
+      </div>
     )
   }
   else {
