@@ -47,11 +47,11 @@ function App() {
       </div>
     )
   }
-  // else if(weather == false){
-  //   return (
-  //     <span>Carregando dados climáticos</span>
-  //   )
-  // }
+  else if(weather == false){
+    return (
+      <span>Carregando dados climáticos</span>
+    )
+  }
   else {
     return (
       <div className="App">
