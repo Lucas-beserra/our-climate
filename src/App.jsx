@@ -11,7 +11,11 @@ import humidity from './assets/icons8-umidade-50.png'
 import windDirection from './assets/icons8-wind-sign-64.png'
 import presure from './assets/icons8-barômetro-50.png'
 import wind from './assets/wind.svg'
+import weatherImg from './assets/undraw_weather_re_qsmd.svg'
+
+
 import './style.css'
+import Footer from './components/footer/Footer'
 
 function App() {
 
@@ -31,7 +35,7 @@ function App() {
     )
 
     setWeather(res.data)
-    console.log(res.data)
+    //console.log(res.data)
   }
 
   useEffect(()=>{
@@ -70,22 +74,21 @@ function App() {
         <img src={happySunAmico} className="happy-sun-amico"/>
 
         <ul className="temperature-info">
-          <li>
-            <img src={thermometer} className="thermometer"/> 
+          <li> 
             <span>
-              Temperatura: {weather['main']['temp'].toFixed(0)}°C  
+              {weather['main']['temp'].toFixed(0)}°C  
             </span>  
           </li>
           <li>
             <img src={thermometerHot} className="thermometer"/>
             <span>
-              Máxima de {weather['main']['temp_max'].toFixed(0)}°C
+              Máxima de {weather['main']['temp_max']}°C
             </span>
           </li>
           <li>
             <img src={thermometerCold} className="thermometer"/>
             <span>
-              Mínima de {weather['main']['temp_min'].toFixed(0)}°C
+              Mínima de {weather['main']['temp_min']}°C
             </span>
           </li>
         </ul>
@@ -119,6 +122,13 @@ function App() {
             <img src={windDirection} className="thermometer"/> 
           </li>
         </ul>
+
+        <div className="undrow-img">
+          <img src={weatherImg}/>
+        </div>
+
+        <Footer/>
+
       </div>
     )
   }

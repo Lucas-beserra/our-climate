@@ -1,0 +1,21 @@
+.footer {
+    height: 25vh;
+    width: 100%;
+    padding-top: -5rem;
+    margin-top: 10rem;
+    background-color: #1E90FF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer span {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    width: 90%;
+}
