@@ -9,6 +9,7 @@ import thermometerHot from './assets/thermometer-hot.svg'
 import thermometerCold from './assets/thermometer-cold.svg'
 import humidity from './assets/icons8-umidade-50.png'
 import windDirection from './assets/icons8-wind-sign-64.png'
+import presure from './assets/icons8-barômetro-50.png'
 import wind from './assets/wind.svg'
 import './style.css'
 
@@ -30,7 +31,7 @@ function App() {
     )
 
     setWeather(res.data)
-    //console.log(res.data)
+    console.log(res.data)
   }
 
   useEffect(()=>{
@@ -87,11 +88,20 @@ function App() {
               Mínima de {weather['main']['temp_min'].toFixed(0)}°C
             </span>
           </li>
+        </ul>
+        <ul className="air-info">
+          <h3>Ar</h3>
           <li>
-            <img src={humidity} className="thermometer"/> 
             <span>
-              Humidade do ar {weather['main']['humidity']}%
+              Humidade: {weather['main']['humidity']}%
             </span>
+            <img src={humidity} className="thermometer"/> 
+          </li>
+          <li>
+            <span>
+              Pressão: {weather['main']['pressure']}hPa  
+            </span>
+            <img src={presure} className="thermometer"/> 
           </li>
         </ul>
         <ul className="wind-info">
@@ -108,7 +118,6 @@ function App() {
             </span>
             <img src={windDirection} className="thermometer"/> 
           </li>
-          
         </ul>
       </div>
     )
