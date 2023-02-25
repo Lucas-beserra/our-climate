@@ -70,8 +70,8 @@ function App() {
           <span>{weather['weather'][0]['description']}</span>
         </div>
 
-        <img src={happySun} className="happy-sun"/>
-        <img src={happySunAmico} className="happy-sun-amico"/>
+        {/* <img src={happySun} className="happy-sun"/>
+        <img src={happySunAmico} className="happy-sun-amico"/> */}
 
         <ul className="temperature-info">
           <li> 
