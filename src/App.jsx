@@ -16,11 +16,14 @@ import weatherImg from './assets/undraw_weather_re_qsmd.svg'
 
 import './style.css'
 import Footer from './components/footer/Footer'
+import Permission from './components/permission/Permission'
 
 function App() {
 
   const [location, setLocation] = useState(false)
   const [weather, setWeather] = useState(false)
+
+  //let cityName = 
 
   let getWeather = async (lat, long) => {
     let res = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
@@ -47,9 +50,7 @@ function App() {
 
   if(location == false){
     return (
-      <div className="permition-container">
-        <span>É necessário permitir o acesso à sua localização!</span>
-      </div>
+      <Permission/>
     )
   }
   else if(weather == false){
