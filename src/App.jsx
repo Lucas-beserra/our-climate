@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import Footer from './components/footer/Footer'
+import Header from './components/header/Header'
 import Permission from './components/permission/Permission'
+import TemperatureInfo from './components/temperatureInfo/TemperatureInfo'
+import AirInfo from './components/airInfo/AirInfo'
+import WindInfo from './components/windInfo/WindInfo'
+import Footer from './components/footer/Footer'
 
-import mapPin from './assets/map-pin.svg'
-import thermometerHot from './assets/thermometer-hot.svg'
-import thermometerCold from './assets/thermometer-cold.svg'
-import humidity from './assets/icons8-umidade-50.png'
-import windDirection from './assets/icons8-wind-sign-64.png'
-import presure from './assets/icons8-barômetro-50.png'
-import wind from './assets/wind.svg'
 import weatherImg from './assets/undraw_weather_re_qsmd.svg'
 
 import './style.css'
@@ -21,6 +18,16 @@ function App() {
   const [location, setLocation] = useState(false)
   const [weather, setWeather] = useState(false)
 
+  let cityName = weather.name
+  let description = weather.weather
+
+  let temperature = weather.main
+  let maximumTemperature = weather.main
+  let minimumTemperature = weather.main
+  let humidity = weather.main
+  let pressure = weather.main
+  let speed = weather.wind
+  let deg = weather.wind
 
   let getWeather = async (lat, long) => {
     let res = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
@@ -60,66 +67,17 @@ function App() {
     return (
       <div className="App">
 
-        <div className="location-info">
-          <div className="city">
-            <img src={mapPin} className="map-pin"/>
-            <span>{weather['name']}</span> 
-          </div> 
-          <span>{weather['weather'][0]['description']}</span>
-        </div>
-
+        <Header name={cityName} description={description[0].description}/> 
       
-        <ul className="temperature-info">
-          <li> 
-            <span>
-              {weather['main']['temp'].toFixed(0)}°C  
-            </span>  
-          </li>
-          <li>
-            <img src={thermometerHot} className="thermometer"/>
-            <span>
-              Máxima de {weather['main']['temp_max']}°C
-            </span>
-          </li>
-          <li>
-            <img src={thermometerCold} className="thermometer"/>
-            <span>
-              Mínima de {weather['main']['temp_min']}°C
-            </span>
-          </li>
-        </ul>
+        <TemperatureInfo 
+          currentTemperature={temperature.temp.toFixed(0)}
+          maximumTemperature={maximumTemperature.temp_max}
+          minimumTemperature={minimumTemperature.temp_min}
+        />
 
-        <ul className="air-info">
-          <h3>Ar</h3>
-          <li>
-            <span>
-              Humidade: {weather['main']['humidity']}%
-            </span>
-            <img src={humidity} className="thermometer"/> 
-          </li>
-          <li>
-            <span>
-              Pressão: {weather['main']['pressure']}hPa  
-            </span>
-            <img src={presure} className="thermometer"/> 
-          </li>
-        </ul>
+        <AirInfo humidity={humidity.humidity} pressure={pressure.pressure}/>
 
-        <ul className="wind-info">
-          <h3>Ventos</h3>
-          <li>
-            <span>
-              Velocidade: {weather['wind']['speed']}m/s  
-            </span>
-            <img src={wind} className="thermometer"/> 
-          </li>
-          <li>
-            <span>
-              Direção: {weather['wind']['deg']}°  
-            </span>
-            <img src={windDirection} className="thermometer"/> 
-          </li>
-        </ul>
+        <WindInfo speed={speed.speed} deg={deg.deg}/>
 
         <div className="undrow-img">
           <img src={weatherImg}/>
